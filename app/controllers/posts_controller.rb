@@ -8,8 +8,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Blog.create(post_params)
+    Post.create(post_params)
     redirect_to new_post_path
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private
