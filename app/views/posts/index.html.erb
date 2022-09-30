@@ -1,2 +1,13 @@
 <h1>ツイート一覧</h1>
-<%= @posts %>
+
+<table>
+  <tr>
+    <th>内容</th>
+  </tr>
+
+<% @posts.each do |blog| %>
+  <tr>
+    <td><%= post.content %></td>
+  </tr>
+<% end %>
+</table>
