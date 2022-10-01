@@ -1,5 +1,7 @@
 <h1>ツイート一覧</h1>
 
+<p><%= notice %></p>
+
 <table>
   <tr>
     <th>内容</th>
@@ -9,7 +11,8 @@
   <tr>
     <td><%= post.content %></td>
     <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
-    <td><%= link_to "ツイートを編集する", edit_post_path(post.id) %></td>
+    <td><%= link_to "ツイートを編集する", edit_post_path(post.id), data: { confirm: '本当に編集してもいいですか?' } %></td>
+    <td><%= link_to 'ツイートを削除する', post_path(post.id), method: :delete, data: { confirm: '本当に削除してもいいですか?' } %></td>
   </tr>
 <% end %>
 </table>

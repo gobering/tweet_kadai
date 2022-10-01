@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   
   def index
     @posts = Post.all
@@ -11,10 +11,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-      redirect_to posts_path
-    else
+    if params[:back]
       render :new
+    else
+      if @post.save
+        redirect_to posts_path, notice: "ツイートしました!"
+      else
+        render :new
+      end
     end
   end
 
@@ -26,10 +30,20 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "ブログを編集しました!"
+      redirect_to posts_path, notice: "ツイートを編集しました!"
     else
       render :edit
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice:"ツイートを削除しました！"
+  end
+
+  def confirm
+    @post = Post.new(post_params)
+    render :new if @post.invalid?
   end
 
   private
