@@ -1,9 +1,18 @@
-<h3>以下の内容で、ツイートする。</h3>
+<header>
+  <h3>以下の内容で、ツイートする。</h3>
+</header>
 
 <%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :content %>
 
-  <p>ツイート:<%= @post.content %></p>
-  <%= form.submit  "ツイートする" %>
-  <%= form.submit  "戻る", name: 'back' %> 
+  <p class="content">ツイート:<%= @post.content %></p>
+
+  <div class="button">
+    <%= form.submit  "ツイートする" %>
+    <%= form.submit  "戻る", name: 'back' %> 
+  </div>
 <% end %>
+
+<footer class="footer">
+  <p>kadai</p>
+</footer>

@@ -1,2 +1,15 @@
-<h1>ツイート詳細画面</h1>
-<p>ツイート内容: <%= @post.content %></p>
+<header>
+  <h1>ツイート詳細画面</h1>
+</header>
+
+<div class="content">
+  <p>ツイート内容: <%= @post.content %></p>
+</div>
+
+<div class="back_button">
+  <%= link_to "ツイート一覧画面にもどる", posts_path, class: "back_link" %>
+</div>
+
+<footer class="footer">
+  <p>kadai<p>
+</footer>
